@@ -1,0 +1,6 @@
+POST http://localhost:3000/wake
+Content-Type: application/json
+
+{
+    "mac": "04-D9-F5-7D-14-AC"
+}
