@@ -1,6 +1,34 @@
-POST http://localhost:3000/wake
+POST http://localhost:4001/auth/login
 Content-Type: application/json
 
 {
-    "mac": "04-D9-F5-7D-14-AC"
+    "user": {
+        "email": "jonas2",
+        "password": "jonas"
+    }
+}
+###
+POST http://localhost:4001/auth/register
+Content-Type: application/json
+
+{
+    "user": {
+        "username": "jonas",
+        "first_name": "jonas",
+        "last_name": "jonas",
+        "email": "jonas2",
+        "password": "jonas"
+    }
+}
+
+###
+GET http://localhost:4001/auth/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvbmFzMiIsInBhc3N3b3JkIjoiam9uYXMiLCJpYXQiOjE1OTIwNzc4NzQsImV4cCI6MTU5MjA3Nzg4OX0.myS1pg2uhWTERd6PLwpxLNkhNVtGdbwFFHuzzoN34yQ
+
+###
+POST http://localhost:4001/auth/refresh/
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvbmFzMiIsInBhc3N3b3JkIjoiam9uYXMiLCJpYXQiOjE1OTIwNzkxMTZ9.EczmEncnYaUOg8T8lfCocHkso7N7szGzbW13Kh-9Tas"
 }
