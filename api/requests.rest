@@ -32,3 +32,12 @@ Content-Type: application/json
 {
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvbmFzMiIsInBhc3N3b3JkIjoiam9uYXMiLCJpYXQiOjE1OTIwNzkxMTZ9.EczmEncnYaUOg8T8lfCocHkso7N7szGzbW13Kh-9Tas"
 }
+###
+
+POST http://localhost:4000/api/shutdown
+Authorization: Bearer
+
+###
+
+POST http://localhost:4000/api/start
+Authorization: Bearer

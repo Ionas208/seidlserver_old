@@ -1,9 +1,17 @@
 var express = require('express');
 var app = express();
 var jwt = require("jsonwebtoken");
+var server = require("./serverCommands");
 require('dotenv').config()
 
 app.use(express.json());
+
+app.post("/api/start", server.start);
+
+app.post("/api/shutdown", server.shutdown);
+
+app.post("/api/restart", authenticateToken, server.restart);
+
 
 function authenticateToken(req, res, next){
     const authHeader = req.headers['authorization'];
