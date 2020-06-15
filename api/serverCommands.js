@@ -20,7 +20,7 @@ const start = (req, res) => {
         else {
             res.sendStatus(204);
         }
-    })
+    }).catch((err) = {})
 }
 
 const shutdown = (req, res) => {
@@ -60,20 +60,37 @@ const getStatus = (req, res) => {
     ping.promise.probe("10.0.0.1", { timeout: 10, deadline: 50 }
     ).then((result) => {
         res.json({ alive: result.alive });
-    }).catch((err) =>{
+    }).catch((err) => {
         res.json({ alive: false });
     })
 }
 
-const getMetrics = (req, res) => {
-    checkForConnection()
-    console.log(NodeSSH)
+const getCpuMetrics = (req, res) => {
+    checkForConnection();
     ssh.execCommand("mpstat -o JSON").then((result) => {
         if ((result.stderr).length > 0) {
             res.sendStatus(500)
         }
         else {
             res.json(JSON.parse(result.stdout));
+        }
+    })
+        .catch((err) => {
+            res.sendStatus(500);
+        })
+        
+    
+}
+
+const getRamMetrics = (req, res) => {
+    checkForConnection();
+    ssh.execCommand('cat /proc/meminfo | grep "^MemFree*" | grep -Eo "[0-9]*[0-9]"').then((result) => {
+        if ((result.stderr).length > 0) {
+            res.sendStatus(500)
+        }
+        else {
+            console.log((result.stdout));
+            res.json({MemFree: (parseInt(result.stdout)/1000000)});
         }
     })
         .catch((err) => {
@@ -93,4 +110,4 @@ function checkForConnection() {
 }
 
 
-module.exports = { start, shutdown, restart, getStatus, getMetrics }
+module.exports = { start, shutdown, restart, getStatus, getCpuMetrics, getRamMetrics}

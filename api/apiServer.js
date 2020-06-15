@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var jwt = require("jsonwebtoken");
 var server = require("./serverCommands");
-var gameserver = require("./gameserverCommands");
+var arkserver = require("./arkserverCommands");
 require('dotenv').config()
 
 app.use(express.json());
@@ -15,9 +15,15 @@ app.post("/api/restart", server.restart);
 
 app.get("/api/getStatus", server.getStatus);
 
-app.get("/api/getMetrics", server.getMetrics);
+app.get("/api/getCpuMetrics", server.getCpuMetrics);
 
-app.post("/api/manageServer", gameserver.manageServer);
+app.get("/api/getRamMetrics", server.getRamMetrics);
+
+app.post("/api/startServer/Ark", arkserver.startServer);
+
+app.post("/api/stopServer/Ark", arkserver.startServer);
+
+app.post("/api/restartServer/Ark", arkserver.startServer);
 
 
 function authenticateToken(req, res, next){
