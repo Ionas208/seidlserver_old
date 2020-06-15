@@ -41,3 +41,22 @@ Authorization: Bearer
 
 POST http://localhost:4000/api/start
 Authorization: Bearer
+
+###
+
+GET http://localhost:4000/api/getStatus
+
+###
+
+GET http://localhost:4000/api/getMetrics
+
+###
+
+POST http://localhost:4000/api/manageServer
+Content-Type: application/json
+
+{
+    "servername": "arkserver",
+    "instruction": "restart"
+}
+
