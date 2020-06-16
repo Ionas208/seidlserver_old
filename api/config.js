@@ -9,7 +9,7 @@ config.ssh = {
 config.gameserver = {
     host: "seidlserver.ddns.net",
     username: "arkserver",
-    privateKey: "D:/10jon/Documents/ssh/arkserverkey.ppk'"
+    privateKey: "D:/10jon/Documents/ssh/arkserverkey.ppk"
 }
 
 config.db = {

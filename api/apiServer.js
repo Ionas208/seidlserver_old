@@ -25,6 +25,10 @@ app.post("/api/stopServer/Ark", arkserver.startServer);
 
 app.post("/api/restartServer/Ark", arkserver.startServer);
 
+app.get("/api/getGameINI", arkserver.getGameINI);
+
+app.get("/api/getGameUserINI", arkserver.getGameUserINI);
+
 
 function authenticateToken(req, res, next){
     const authHeader = req.headers['authorization'];

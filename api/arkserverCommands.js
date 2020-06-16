@@ -5,7 +5,7 @@ arkssh = new NodeSSH();
 arkssh.connect({
     host: config.gameserver.host,
     username: config.gameserver.username,
-    privateKey: config.username.privateKey
+    privateKey: config.gameserver.privateKey
 }).catch((err) => {
     console.log(err.message)
 })
@@ -67,4 +67,40 @@ const restartServer = (req, res) => {
             res.status(500).json({error: err.message})
         })
 }
-module.exports = {startServer, stopServer, restartServer}
+
+const getGameINI = (req, res) => {
+    arkssh.execCommand("cat /home/arkserver/serverfiles/ShooterGame/Config/DefaultGame.ini").then((result) => {
+        if ((result.stderr).length > 0) {
+            console.log(result.stderr);
+            res.status(500).json({message: result.stderr})
+        }
+        else {  
+            console.log(result.stdout)
+            res.status(200).json({gameini: result.stdout})
+        }
+        })
+        .catch((err) => {
+            console.log(err.message)
+            res.status(500).json({error: err.message})
+        })
+}
+
+const getGameUserINI = (req, res) => {
+    arkssh.execCommand("cat /home/arkserver/serverfiles/ShooterGame/Config/DefaultGameUserSettings.ini").then((result) => {
+        if ((result.stderr).length > 0) {
+            console.log(result.stderr);
+            res.status(500).json({message: result.stderr})
+        }
+        else {  
+            console.log(result.stdout)
+            res.status(200).json({gameini: result.stdout})
+        }
+        })
+        .catch((err) => {
+            console.log(err.message)
+            res.status(500).json({error: err.message})
+        })
+}
+
+
+module.exports = {startServer, stopServer, restartServer, getGameINI, getGameUserINI}
