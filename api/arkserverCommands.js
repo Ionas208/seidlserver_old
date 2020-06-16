@@ -1,10 +1,11 @@
+var config = require("./config")
 var NodeSSH = require("node-ssh");
 arkssh = new NodeSSH();
 
 arkssh.connect({
-    host: 'seidlserver.ddns.net',
-    username: "arkserver",
-    privateKey: 'D:/10jon/Documents/ssh/arkserverkey.ppk'
+    host: config.gameserver.host,
+    username: config.gameserver.username,
+    privateKey: config.username.privateKey
 }).catch((err) => {
     console.log(err.message)
 })

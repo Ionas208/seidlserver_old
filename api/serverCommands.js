@@ -1,3 +1,4 @@
+var config = require("./config")
 var wol = require('wakeonlan');
 fs = require('fs')
 path = require('path')
@@ -6,13 +7,13 @@ ssh = new NodeSSH();
 var ping = require('ping');
 
 ssh.connect({
-    host: 'seidlserver.ddns.net',
-    username: 'api',
-    privateKey: 'D:/10jon/Documents/ssh/apikey.ppk'
+    host: config.ssh.host,
+    username: config.ssh.username,
+    privateKey: config.ssh.privateKey
 })
 
 const start = (req, res) => {
-    wol("FC:AA:14:1F:9F:AB", (err) => {
+    wol(config.wol.mac, (err) => {
         if (err) {
             console.log(err.message);
             res.sendStatus(500);
@@ -57,7 +58,7 @@ const restart = (req, res) => {
 
 const getStatus = (req, res) => {
     checkForConnection()
-    ping.promise.probe("10.0.0.1", { timeout: 10, deadline: 50 }
+    ping.promise.probe(config.ping.destination, { timeout: config.ping.timeot, deadline: config.ping.deadline }
     ).then((result) => {
         res.json({ alive: result.alive });
     }).catch((err) => {
@@ -102,9 +103,9 @@ const getRamMetrics = (req, res) => {
 function checkForConnection() {
     if (ssh.connection == null) {
         ssh.connect({
-            host: 'seidlserver.ddns.net',
-            username: 'api',
-            privateKey: 'D:/10jon/Documents/ssh/apikey.ppk'
+            host: config.ssh.host,
+            username: config.ssh.username,
+            privateKey: config.ssh.privateKey
         })
     }
 }

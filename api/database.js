@@ -1,3 +1,4 @@
+var config = require("./config")
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
@@ -5,11 +6,11 @@ require("dotenv").config();
 
 const Pool = require('pg').Pool;
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'seidlserverdb',
-    password: 'postgres',
-    port: 5432,
+    user: config.db.user,
+    host: config.db.host,
+    database: config.db.database,
+    password: config.db.password,
+    port: config.db.port,
 });
 
 const prep = require('pg-prepared')

@@ -2,6 +2,7 @@ POST http://localhost:4001/auth/login
 Content-Type: application/json
 
 {
+<<<<<<< Updated upstream
     "user": {
         "email": "jonas2",
         "password": "jonas"
@@ -57,3 +58,7 @@ GET http://localhost:4000/api/getRamMetrics
 ###
 
 POST http://localhost:4000/api/startServer/Ark
+=======
+    "mac": "04:D9:F5:7D:14:AC"
+}
+>>>>>>> Stashed changes
