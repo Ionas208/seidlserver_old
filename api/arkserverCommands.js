@@ -5,7 +5,7 @@ arkssh = new NodeSSH();
 arkssh.connect({
     host: config.gameserver.host,
     username: config.gameserver.username,
-    privateKey: config.username.privateKey
+    privateKey: config.gameserver.privateKey
 }).catch((err) => {
     console.log(err.message)
 })

@@ -7,7 +7,7 @@
     "devStartApi": "nodemon apiServer.js",
     "devStartAuth": "nodemon authServer.js",
     "devStart": "concurrently \"nodemon apiServer.js\" \"nodemon authServer\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon testServer"
   },
   "author": "",
   "license": "ISC",
