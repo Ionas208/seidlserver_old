@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 class Nav extends React.Component {
     render() {
         return (
-            <div classname="navbar">
-                
+            <div className="navbar">
+                <div className="logo">
+                    seidlserver
+                </div>
+                <div className="icon">
+                    x
+                </div>
             </div>
         );
     }

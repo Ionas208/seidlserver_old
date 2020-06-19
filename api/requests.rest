@@ -57,6 +57,7 @@ GET http://localhost:4000/api/getRamMetrics
 ###
 
 POST http://localhost:4000/api/startServer/Ark
+<<<<<<< HEAD
 
 ###
 
@@ -65,3 +66,19 @@ GET http://localhost:4000/api/getGameINI
 ###
 
 GET http://localhost:4000/api/getGameUserINI
+=======
+=======
+    "mac": "04:D9:F5:7D:14:AC"
+}
+>>>>>>> Stashed changes
+###
+POST http://localhost:4002/auth/login
+Content-Type: application/json
+
+{
+    "user": {
+        "email": "asd",
+        "password": "asd"
+    }
+}
+>>>>>>> master

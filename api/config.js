@@ -1,15 +1,36 @@
 var config = {};
+config.debug = true;
 
-config.ssh = {
-    host: "seidlserver.ddns.net",
-    username: "api",
-    privateKey: "D:/10jon/Documents/ssh/apikey.ppk"
-}
 
 config.gameserver = {
     host: "seidlserver.ddns.net",
     username: "arkserver",
-    privateKey: "D:/10jon/Documents/ssh/arkserverkey.ppk"
+    privateKey: "D:/10jon/Documents/ssh/arkserverkey.ppk'"
+}
+
+if(config.debug){
+    config.ssh = {
+        host: "seidlserver.ddns.net",
+        username: "api",
+        privateKey: "D:/10jon/Documents/ssh/apikey.ppk"
+    }
+    config.gameserver = {
+        host: "seidlserver.ddns.net",
+        username: "arkserver",
+        privateKey: "D:/10jon/Documents/ssh/arkserverkey.ppk"
+    }
+}
+else{
+    config.ssh = {
+        host: "seidlserver.ddns.net",
+        username: "api",
+        privateKey: "D:/10jon/Documents/ssh/apikey.ppk"
+    }
+    config.gameserver = {
+        host: "seidlserver.ddns.net",
+        username: "arkserver",
+        privateKey: "D:/10jon/Documents/ssh/arkserverkey.ppk"
+    }
 }
 
 config.db = {

@@ -6,6 +6,7 @@ var NodeSSH = require("node-ssh");
 ssh = new NodeSSH();
 var ping = require('ping');
 
+
 ssh.connect({
     host: config.ssh.host,
     username: config.ssh.username,
