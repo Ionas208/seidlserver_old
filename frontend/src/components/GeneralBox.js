@@ -1,4 +1,4 @@
-import react from "react"
+import React from "react"
 
 class GeneralBox extends React.Component{
     render(){

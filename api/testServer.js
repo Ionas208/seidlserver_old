@@ -1,8 +1,13 @@
 var express = require("express");
 var app = express();
 var jwt = require("jsonwebtoken");
+var cors = require('cors');
+var bodyParser = require('body-parser');
 require("dotenv").config();
 
+
+
+app.use(cors());
 app.use(express.json());
 
 var start = false;
@@ -66,6 +71,13 @@ app.post("/api/restartServer/Ark", (req, res) => {
   }, 3000);
 });
 
+app.post("/auth/login", (req, res) => {
+    var user = req.body.user;
+    var accessToken = generateAccessToken(user);
+    var refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+    res.json({accessToken: accessToken, refreshToken: refreshToken});
+})
+
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -81,4 +93,8 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.listen(4000);
+function generateAccessToken(user){
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'});
+}
+
+app.listen(4002);
