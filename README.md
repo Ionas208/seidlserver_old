@@ -9,5 +9,6 @@ A server management tool which runs on a low-powered computer (Raspberry Pi) to 
 * Stopping a server via SSH
 
 ### Features which might or might not be coming some time in the near or far future
+* An actual GUI
 * Good SSH integration
-* [LGSM](https://linuxgsm.com/) GUI
+* [LGSM](https://linuxgsm.com/) Integration (Creating/Starting/Stopping/Managing)
